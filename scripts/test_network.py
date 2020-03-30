@@ -1,6 +1,6 @@
 from appium import webdriver
 
-class TestSetting:
+class TestNetwork:
 
     def setup(self):
         desired_caps = {}
@@ -38,12 +38,6 @@ class TestSetting:
                 break
         self.driver.find_element_by_xpath('//*[@text="2G"]').click()
 
-    def test_search(self):
-        self.driver.find_element_by_id('com.android.settings:id/search').click()
-        ele = self.driver.find_element_by_id('android:id/search_src_text')
-        ele.click()
-        ele.clear()
-        ele.send_keys('s')
-        self.driver.find_element_by_class_name('android.widget.ImageButton').click()
+
 
 
