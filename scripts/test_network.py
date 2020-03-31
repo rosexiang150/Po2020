@@ -1,22 +1,16 @@
+import os, sys
+sys.path.append(os.getcwd())
+
 from appium import webdriver
+from base.base_driver import BaseDriver
+
 
 class TestNetwork:
 
     def setup(self):
-        desired_caps = {}
-        # 设备信息
-        desired_caps['platformName'] = 'Android'
-        desired_caps['platformVersion'] = '6.0'
-        desired_caps['deviceName'] = 'emulator-5554'
-        # app的信息
-        desired_caps['appPackage'] = 'com.android.settings'
-        desired_caps['appActivity'] = '.Settings'
-        # 解决输入中文
-        desired_caps['unicodeKeyboard'] = True
-        desired_caps['resetKeyboard'] = True
+        basedriver = BaseDriver()
+        self.driver = basedriver.init_driver()
 
-        # 声明我们的driver对象
-        self.driver =  webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
     def test_net_3G(self):
         self.driver.find_element_by_xpath('//*[@text="更多"]').click()
@@ -37,6 +31,10 @@ class TestNetwork:
                 i.click()
                 break
         self.driver.find_element_by_xpath('//*[@text="2G"]').click()
+
+
+
+
 
 
 
