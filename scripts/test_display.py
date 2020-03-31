@@ -3,18 +3,19 @@ sys.path.append(os.getcwd())
 
 from appium import webdriver
 from base.base_driver import BaseDriver
+from page.display_page import DisplayPage
 
 
 class TestDisplay:
 
     def setup(self):
         baseDriver = BaseDriver()
-        self.driver = baseDriver.init_driver()
+        driver = baseDriver.create_driver()
+        self.display = DisplayPage(driver)
 
     def test_search(self):
-        self.driver.find_element_by_id('com.android.settings:id/search').click()
-        ele = self.driver.find_element_by_id('android:id/search_src_text')
-        ele.click()
-        ele.clear()
-        ele.send_keys('s')
-        self.driver.find_element_by_class_name('android.widget.ImageButton').click()
+        self.display.click_search()
+        self.display.input_text('s')
+        self.display.click_back()
+
+
