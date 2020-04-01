@@ -1,13 +1,12 @@
 from selenium.webdriver.common.by import By
 
-class NetworkPage:
 
+class NetworkPage:
     more_button = By.XPATH, '//*[@text="更多"]'
     network_button = By.XPATH, '//*[@text="移动网络"]'
     net2G_button = By.XPATH, '//*[@text="2G"]'
     net3G_button = By.XPATH, '//*[@text="3G"]'
     firstNet_button = By.ID, 'android:id/title'
-
 
     def __init__(self, driver):
         self.driver = driver
@@ -23,7 +22,6 @@ class NetworkPage:
                 i.click()
                 break
         self.find_element(self.net3G_button).click()
-
 
     def click_2g(self):
         # self.driver.find_element_by_xpath('//*[@text="更多"]').click()

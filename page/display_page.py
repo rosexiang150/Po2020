@@ -1,19 +1,14 @@
 from selenium.webdriver.common.by import By
+from base.base_action import BaseAction
 
-class DisplayPage:
+class DisplayPage(BaseAction):
 
     search_button = By.ID, 'com.android.settings:id/search'
     input_text_view = By.ID, 'android:id/search_src_text'
     back_button = By.CLASS_NAME, 'android.widget.ImageButton'
 
-
-    def find_element(self, loc):
-        return self.driver.find_element(loc[0], loc[1])
-
     def __init__(self, driver):
-        self.driver = driver
-        print(id(driver))
-
+        BaseAction.__init__(self, driver)
 
     def click_search(self):
         ele = self.find_element(self.search_button)

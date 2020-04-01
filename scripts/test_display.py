@@ -1,8 +1,8 @@
 import os, sys
-sys.path.append(os.getcwd())
 
 from appium import webdriver
 from base.base_driver import BaseDriver
+sys.path.append(os.getcwd())
 from page.display_page import DisplayPage
 
 
@@ -10,7 +10,7 @@ class TestDisplay:
 
     def setup(self):
         baseDriver = BaseDriver()
-        driver = baseDriver.create_driver()
+        driver = baseDriver.init_driver()
         self.display = DisplayPage(driver)
 
     def test_search(self):

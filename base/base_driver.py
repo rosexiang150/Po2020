@@ -2,7 +2,7 @@ from appium import webdriver
 
 class BaseDriver:
 
-    def create_driver(self):
+    def init_driver(self):
         desired_caps = {}
         # 设备信息
         desired_caps['platformName'] = 'Android'
@@ -16,5 +16,4 @@ class BaseDriver:
         desired_caps['resetKeyboard'] = True
         # 声明我们的driver对象
         driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-        #print(id(driver))
         return driver
