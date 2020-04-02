@@ -1,7 +1,11 @@
+import os, sys
+sys.path.append(os.getcwd())
+
 from selenium.webdriver.common.by import By
+from base.base_action import BaseAction
 
+class NetworkPage(BaseAction):
 
-class NetworkPage:
     more_button = By.XPATH, '//*[@text="更多"]'
     network_button = By.XPATH, '//*[@text="移动网络"]'
     net2G_button = By.XPATH, '//*[@text="2G"]'
@@ -9,36 +13,21 @@ class NetworkPage:
     firstNet_button = By.ID, 'android:id/title'
 
     def __init__(self, driver):
-        self.driver = driver
+        BaseAction.__init__(self, driver)
 
     def click_3g(self):
-        # self.driver.find_element_by_xpath('//*[@text="更多"]').click()
-        self.find_element(self.more_button).click()
-        # self.driver.find_element_by_xpath('//*[@text="移动网络"]').click()
-        self.find_element(self.network_button).click()
-        list1 = self.find_elements(self.firstNet_button)
-        for i in list1:
-            if i.get_attribute('text') == "首选网络类型":
-                i.click()
-                break
-        self.find_element(self.net3G_button).click()
+        self.click(self.more_button)
+        self.click(self.network_button)
+
+        ele1 = self.custom_find_ele_ById_And_content(self.firstNet_button,"首选网络类型")
+        ele1.click()
+
+        self.click(self.net3G_button)
 
     def click_2g(self):
-        # self.driver.find_element_by_xpath('//*[@text="更多"]').click()
-        self.find_element(self.more_button).click()
-        # self.driver.find_element_by_xpath('//*[@text="移动网络"]').click()
-        self.find_element(self.network_button).click()
-        # list1 = self.driver.find_elements_by_id('android:id/title')
-        list1 = self.find_elements(self.firstNet_button)
-        for i in list1:
-            if i.get_attribute('text') == "首选网络类型":
-                i.click()
-                break
-        # self.driver.find_element_by_xpath('//*[@text="2G"]').click()
-        self.find_element(self.net2G_button).click()
-
-    def find_element(self, loc):
-        return self.driver.find_element(loc[0], loc[1])
-
-    def find_elements(self, loc):
-        return self.driver.find_elements(loc[0], loc[1])
+        self.click(self.more_button)
+        self.click(self.network_button)
+        ele1 = self.custom_find_ele_ById_And_content(self.firstNet_button, "首选网络类型")
+        ele1.click()
+        # self.find_element(self.net2G_button).click()
+        self.click(self.net2G_button)

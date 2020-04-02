@@ -8,20 +8,24 @@ class DisplayPage(BaseAction):
     back_button = By.CLASS_NAME, 'android.widget.ImageButton'
 
     def __init__(self, driver):
-        BaseAction.__init__(self, driver)
+        BaseAction.__init__(self,driver)
 
     def click_search(self):
-        ele = self.find_element(self.search_button)
-        ele.click()
+        # ele = self.find_element(self.search_button)
+        # ele.click()
+        self.click(self.search_button)
 
     def input_text(self, text):
-        ele = self.find_element(self.input_text_view)
-        ele.click()
-        ele.clear()
-        ele.send_keys(text)
+        # ele = self.find_element(self.input_text_view)
+        # ele.click()
+        # ele.clear()
+        # ele.send_keys(text)
+        self.click(self.input_text_view)
+
 
     def click_back(self):
-        self.find_element(self.back_button).click()
+        # self.find_element(self.back_button).click()
+        self.click(self.back_button)
 
 
 

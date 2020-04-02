@@ -1,8 +1,7 @@
 import os, sys
-
-from appium import webdriver
-from base.base_driver import BaseDriver
 sys.path.append(os.getcwd())
+
+from base.base_driver import BaseDriver
 from page.display_page import DisplayPage
 
 
